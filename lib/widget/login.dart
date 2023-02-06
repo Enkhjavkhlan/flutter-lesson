@@ -12,7 +12,7 @@ class LoginPage extends StatelessWidget {
 
   void _onSubmit() {
     if (_fromKey.currentState!.validate()) {
-      print("amjilttaii");
+      print("amjilttai.");
       // context iig parameter awahgui global r ashiglaj bga
       Provider.of<CommonProvider>(GlobalKeys.navigatorKey.currentContext!,
               listen: false)
