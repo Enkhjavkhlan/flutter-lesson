@@ -13,7 +13,7 @@ class _LoginPageState extends State<LoginPage> {
   final _fromKey = GlobalKey<FormState>();
 
   void _onSubmit() {
-    if (_fromKey.currentState!.validate()) print("amjilttai");
+    if (_fromKey.currentState!.validate()) print("amjilttaii");
   }
 
   @override
