@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie/providers/common.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,7 +15,10 @@ class _LoginPageState extends State<LoginPage> {
   final _fromKey = GlobalKey<FormState>();
 
   void _onSubmit() {
-    if (_fromKey.currentState!.validate()) print("amjilttaii");
+    if (_fromKey.currentState!.validate()) {
+      print("amjilttaii");
+      Provider.of<CommonProvider>(context, listen: false).onLoggin();
+    }
   }
 
   @override

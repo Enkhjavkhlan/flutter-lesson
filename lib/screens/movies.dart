@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:movie/model/movie/index.dart';
+import 'package:movie/providers/common.dart';
 import 'package:movie/widget/movie_card.dart';
 import 'package:movie/widget/movie_special_card.dart';
+import 'package:provider/provider.dart';
 
 class MoviesPage extends StatefulWidget {
-  final List<int> wishListId;
-  final void Function(int) onToggleWishList;
-  const MoviesPage(this.wishListId, this.onToggleWishList, {super.key});
+  const MoviesPage({super.key});
 
   @override
   State<MoviesPage> createState() => _MoviesPageState();
@@ -19,7 +19,10 @@ class _MoviesPageState extends State<MoviesPage> {
     String res =
         await DefaultAssetBundle.of(context).loadString("assets/movies.json");
     //print("res: $res");
-    return MovieModel.fromList(jsonDecode(res));
+    List<MovieModel> data = MovieModel.fromList(jsonDecode(res));
+    Provider.of<CommonProvider>(context, listen: false).setMovies(data);
+    // listen: false provieder sonsohgui
+    return data;
   }
 
   @override
@@ -57,10 +60,8 @@ class _MoviesPageState extends State<MoviesPage> {
                     padding: EdgeInsets.only(left: 10),
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: List.generate(
-                          _specialData.length,
-                          (index) => MovieSpecialCard(_specialData[index],
-                              widget.onToggleWishList, widget.wishListId)),
+                      children: List.generate(_specialData.length,
+                          (index) => MovieSpecialCard(_specialData[index])),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -79,10 +80,8 @@ class _MoviesPageState extends State<MoviesPage> {
                     child: Wrap(
                       spacing: 20,
                       runSpacing: 10,
-                      children: List.generate(
-                          snapshot.data!.length,
-                          (index) => MovieCard(snapshot.data![index],
-                              widget.wishListId, widget.onToggleWishList)),
+                      children: List.generate(snapshot.data!.length,
+                          (index) => MovieCard(snapshot.data![index])),
                     ),
                   ),
                 ],
