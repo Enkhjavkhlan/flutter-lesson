@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movie/global_keys.dart';
 import 'package:movie/providers/common.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatelessWidget {
+  LoginPage({super.key});
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   final _phoneCtrol = TextEditingController();
   final _passCtrol = TextEditingController();
   final _fromKey = GlobalKey<FormState>();
@@ -17,7 +13,10 @@ class _LoginPageState extends State<LoginPage> {
   void _onSubmit() {
     if (_fromKey.currentState!.validate()) {
       print("amjilttaii");
-      Provider.of<CommonProvider>(context, listen: false).onLoggin();
+      // context iig parameter awahgui global r ashiglaj bga
+      Provider.of<CommonProvider>(GlobalKeys.navigatorKey.currentContext!,
+              listen: false)
+          .onLoggin();
     }
   }
 
@@ -34,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Let's sing you in.",
+                  "Let's Sing you in.",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,

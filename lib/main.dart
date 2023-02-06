@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie/global_keys.dart';
 import 'package:movie/providers/common.dart';
 import 'package:movie/screens/home.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Movie app',
+        navigatorKey: GlobalKeys.navigatorKey,
         home: HomePage(),
       ),
     );
