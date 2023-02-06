@@ -6,7 +6,9 @@ import 'package:movie/widget/movie_card.dart';
 import 'package:movie/widget/movie_special_card.dart';
 
 class MoviesPage extends StatefulWidget {
-  const MoviesPage({super.key});
+  final List<int> wishListId;
+  final void Function(int) onToggleWishList;
+  const MoviesPage(this.wishListId, this.onToggleWishList, {super.key});
 
   @override
   State<MoviesPage> createState() => _MoviesPageState();
@@ -16,7 +18,7 @@ class _MoviesPageState extends State<MoviesPage> {
   Future<List<MovieModel>> _getData() async {
     String res =
         await DefaultAssetBundle.of(context).loadString("assets/movies.json");
-    print("res: $res");
+    //print("res: $res");
     return MovieModel.fromList(jsonDecode(res));
   }
 
@@ -55,8 +57,10 @@ class _MoviesPageState extends State<MoviesPage> {
                     padding: EdgeInsets.only(left: 10),
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: List.generate(_specialData.length,
-                          (index) => MovieSpecialCard(_specialData[index])),
+                      children: List.generate(
+                          _specialData.length,
+                          (index) => MovieSpecialCard(_specialData[index],
+                              widget.onToggleWishList, widget.wishListId)),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -75,8 +79,10 @@ class _MoviesPageState extends State<MoviesPage> {
                     child: Wrap(
                       spacing: 20,
                       runSpacing: 10,
-                      children: List.generate(snapshot.data!.length,
-                          (index) => MovieCard(snapshot.data![index])),
+                      children: List.generate(
+                          snapshot.data!.length,
+                          (index) => MovieCard(snapshot.data![index],
+                              widget.wishListId, widget.onToggleWishList)),
                     ),
                   ),
                 ],
