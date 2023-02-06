@@ -18,6 +18,9 @@ class LoginPage extends StatelessWidget {
               listen: false)
           .onLoggin();
     }
+    Provider.of<CommonProvider>(GlobalKeys.navigatorKey.currentContext!,
+            listen: false)
+        .onLoggin();
   }
 
   @override
