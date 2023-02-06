@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Let's sing you in.",
+                  "Let's SSing you in.",
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: 30,
