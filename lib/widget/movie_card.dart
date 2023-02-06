@@ -3,14 +3,23 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movie/model/movie/index.dart';
 import 'package:movie/screens/movie_detail.dart';
+import 'package:movie/widget/my_bottomsheet.dart';
+import 'package:movie/widget/my_dialog.dart';
 
 class MovieCard extends StatelessWidget {
   final MovieModel data;
   const MovieCard(this.data, {super.key});
 
   void _onCardTap(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (_) => MovieDetailPage(data)));
+    //showBottomSheet(context: context, builder: (context) => MyBottomSheet());
+    // showModalBottomSheet(
+    //     context: context, builder: (context) => MyBottomSheet());
+    showDialog(
+        context: context,
+        builder: (context) => MyDialog(data),
+        useSafeArea: false); // ip der deed tal awna
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (_) => MovieDetailPage(data)));
   }
 
   @override
