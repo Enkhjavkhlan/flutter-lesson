@@ -12,12 +12,14 @@ class MovieCard extends StatelessWidget {
 
   void _onCardTap(BuildContext context) {
     //showBottomSheet(context: context, builder: (context) => MyBottomSheet());
-    // showModalBottomSheet(
-    //     context: context, builder: (context) => MyBottomSheet());
-    showDialog(
+    showModalBottomSheet(
         context: context,
-        builder: (context) => MyDialog(data),
-        useSafeArea: false); // ip der deed tal awna
+        builder: (context) => MyBottomSheet(data),
+        isScrollControlled: true);
+    // showDialog(
+    //     context: context,
+    //     builder: (context) => MyDialog(data),
+    //     useSafeArea: false); // ip der deed tal awna
     // Navigator.push(
     //     context, MaterialPageRoute(builder: (_) => MovieDetailPage(data)));
   }
