@@ -1,8 +1,13 @@
+import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:movie/bloc/movie/bloc.dart';
+import 'package:movie/bloc/movie/events.dart';
 import 'package:movie/global_keys.dart';
+import 'package:movie/model/movie/index.dart';
 import 'package:movie/providers/common.dart';
+import 'package:movie/services/api/index.dart';
 import 'package:movie/widget/login.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +19,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  final _bloc = MovieBloc();
   void _onChangeLanguage() {
     final context = GlobalKeys.navigatorKey.currentContext!;
     if (context.locale.languageCode == Locale('mn', 'MN').languageCode) {
@@ -33,6 +39,19 @@ class _ProfilePageState extends State<ProfilePage> {
     print(file?.name);
   }
 
+  void _onHttpRequist() async {
+    _bloc.add(MovieTest());
+    // final api = ApiService();
+    // final data2 = await api.getRequest("/packages/dio", true);
+    // print(data2);
+
+    // final dio = Dio();
+    // Response data = await dio.get('https://wowkino.in/k/20096');
+    // Response data1 = await dio.post('https://wowkino.in/k/20096',
+    //     data: MovieModel(id: 1, title: "", imgUrl: '').toJson());
+    // print(data);
+  }
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).devicePixelRatio;
@@ -50,6 +69,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ElevatedButton(
                   onPressed: () => _onImagePicker(ImageSource.camera),
                   child: Text("Камер"),
+                ),
+                ElevatedButton(
+                  onPressed: _onHttpRequist,
+                  child: Text("HTTP Request"),
                 ),
                 ElevatedButton(
                   onPressed: () => provider.onLogout(),
