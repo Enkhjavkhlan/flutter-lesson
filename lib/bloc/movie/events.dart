@@ -9,3 +9,11 @@ class MovieGetAll extends MovieEvent {
   @override
   List<Object?> get props => [];
 }
+
+//63e37a70ebd26539d078fe9f
+class MovieGetInfo extends MovieEvent {
+  final int id;
+  const MovieGetInfo(this.id);
+  @override
+  List<Object?> get props => [id];
+}

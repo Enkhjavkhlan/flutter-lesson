@@ -8,7 +8,7 @@ class MovieSpecialCard extends StatelessWidget {
 
   void _onCardTap(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (_) => MovieDetailPage(data)));
+        context, MaterialPageRoute(builder: (_) => MovieDetailPage(data.id)));
   }
 
   @override

@@ -20,12 +20,12 @@ class MovieLoading extends MovieState {
 }
 
 class MovieSuccess extends MovieState {
-  final List<MovieModel> data;
+  //final List<MovieModel> data;
 
-  MovieSuccess(this.data);
+  const MovieSuccess();
 
   @override
-  List<Object?> get props => [this.data];
+  List<Object?> get props => [];
 }
 
 class MovieFailure extends MovieState {
@@ -34,4 +34,13 @@ class MovieFailure extends MovieState {
 
   @override
   List<Object?> get props => [message];
+}
+
+class MovieSuccessDetail extends MovieState {
+  final MovieModel data;
+
+  const MovieSuccessDetail(this.data);
+
+  @override
+  List<Object?> get props => [];
 }

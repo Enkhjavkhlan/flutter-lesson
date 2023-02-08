@@ -46,8 +46,6 @@ class _MoviesPageState extends State<MoviesPage> {
               if (state is MovieSuccess) {
                 setState(() {
                   _loading = false;
-                  Provider.of<CommonProvider>(context, listen: false)
-                      .setMovies(state.data);
                 });
               }
               if (state is MovieFailure) {
