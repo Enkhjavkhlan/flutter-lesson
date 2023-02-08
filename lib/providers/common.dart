@@ -6,6 +6,10 @@ class CommonProvider extends ChangeNotifier {
   List<int> wishListids = [];
   int currentIdx = 0;
   bool isLogged = true;
+
+  List<MovieModel> get specialData =>
+      movies.length > 3 ? movies.sublist(0, 3) : movies;
+
   void setMovies(List<MovieModel> data) {
     movies = data;
     notifyListeners();

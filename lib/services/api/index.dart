@@ -6,7 +6,8 @@ class ApiService {
   ApiService()
       : dio = Dio(BaseOptions(
           //baseUrl: "localhost:8000"
-          baseUrl: "https://pub.dev",
+          //baseUrl: "https://pub.dev",
+          baseUrl: "https://api.jsonbin.io/v3/b",
           receiveTimeout: 30000, //30sec
           sendTimeout: 30000, //30 sec ywahgui bol aldaa
         ))
@@ -16,7 +17,10 @@ class ApiService {
     if (isAuth) {
       print("Auth required");
       return dio.get(path,
-          options: Options(headers: {"Authhorization": "Bearer SDANDALKSDAD"}));
+          options: Options(headers: {
+            "X-ACCESS-KEY":
+                "\$2b\$10\$sXoHOl/mEBsnKtsc8ue9YOs9y.ZGA/Bz8FxxBpQ92xu6ynmz3Z4Ee"
+          }));
     } else
       return dio.get(path);
   }

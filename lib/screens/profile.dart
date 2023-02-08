@@ -40,7 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void _onHttpRequist() async {
-    _bloc.add(MovieTest());
+    _bloc.add(MovieGetAll());
     // final api = ApiService();
     // final data2 = await api.getRequest("/packages/dio", true);
     // print(data2);

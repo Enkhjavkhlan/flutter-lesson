@@ -4,8 +4,8 @@ abstract class MovieEvent extends Equatable {
   const MovieEvent();
 }
 
-class MovieTest extends MovieEvent {
-  const MovieTest();
+class MovieGetAll extends MovieEvent {
+  const MovieGetAll();
   @override
   List<Object?> get props => [];
 }
